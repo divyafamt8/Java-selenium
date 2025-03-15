@@ -31,9 +31,9 @@ jobs:
       with: 
        name: test-results
        path: target/reports
-       
-   - name: Deploy to Github Pages
-      if: success()
+      
+    - name: Deploy to Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
-       publish_dir: ./public
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: target/reports
