@@ -19,8 +19,15 @@ jobs:
     - name: Set up JDK 17
       uses: actions/setup-java@v4
       with:
-        java-version: '11'
+        java-version: '17'
         distribution: 'temurin'
 
     - name: Run Tests
       run: mvn clean test
+
+    - name: Upload Reports
+      if: always()
+      uses: actions/upload-artifact@v4
+      with: 
+       name: test-results
+       path: target/reports
